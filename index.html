@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Grid</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+        .video-container {
+            display: flex;
+            gap: 0px;
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 515px;
+        }
+        .moving-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 11rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: move-diagonal 9s linear infinite, glow 3s infinite;
+            text-align: center;
+            width: 100%;
+            z-index: 2;
+        }
+        @keyframes move-diagonal {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100vw, 100vh);
+            }
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px red, 0 0 10px orange, 0 0 15px yellow, 0 0 20px green, 0 0 25px blue, 0 0 30px indigo, 0 0 35px violet;
+            }
+            50% {
+                text-shadow: 0 0 10px violet, 0 0 20px indigo, 0 0 30px blue, 0 0 40px green, 0 0 50px yellow, 0 0 60px orange, 0 0 70px red;
+            }
+            100% {
+                text-shadow: 0 0 5px red, 0 0 10px orange, 0 0 15px yellow, 0 0 20px green, 0 0 25px blue, 0 0 30px indigo, 0 0 35px violet;
+            }
+        }
+        /* Mobile-specific styling */
+        @media (max-width: 768px) {
+            .moving-text {
+                font-size: 6rem;
+            }
+            .video-container {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .video-container video {
+                max-width: 100%;
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener('load', () => {
+            const videos = document.querySelectorAll('video');
+            videos.forEach(video => video.play());
+        });
+
+        // Add event listener to play audio when user clicks/taps anywhere on the page
+        document.addEventListener('click', function playAudio() {
+            const audio = document.querySelector('audio');
+            if (audio) {
+                audio.play().catch(error => {
+                    console.error('Error playing audio:', error);
+                });
+                // Remove the event listener after the first click
+                document.removeEventListener('click', playAudio);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="video-container">
+        <video muted autoplay loop>
+            <source src="nn.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="moving-text">
+        Happy New Year 2025
+    </div>
+
+    <!-- Background Music -->
+    <audio loop>
+        <source src="audio/au.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+</body>
+</html>
