@@ -21,8 +21,8 @@
             justify-content: center;
             gap: 0px; 
             position: relative;
-            width: 100%; /* Ensure videos stretch across the width */
-            height: 100%; /* Ensure videos fill the height */
+            width: 100%; 
+            height: 100%; 
         }
         .video-container video {
             width: 100%;
@@ -30,9 +30,9 @@
             height: auto;
             aspect-ratio: 20/9;
             object-fit: cover;
-            display: none; /* Initially hide videos */
+            display: none; 
             opacity: 0;
-            transition: opacity 1s ease-in-out; /* Smooth transition for video opacity */
+            transition: opacity 1s ease-in-out; 
         }
         .moving-text {
             position: absolute;
@@ -51,10 +51,10 @@
         }
         @keyframes move-horizontal {
             0% {
-                transform: translate(-100vw, 0); /* Start from the left side */
+                transform: translate(-100vw, 0); 
             }
             100% {
-                transform: translate(100vw, 0); /* Move across the screen */
+                transform: translate(100vw, 0); 
             }
         }
         @keyframes glow {
@@ -69,10 +69,10 @@
             }
         }
 
-        /* Mobile-specific styling */
+        
         @media (max-width: 1000px) {
             .moving-text {
-                font-size: 3.4rem;
+                font-size: 2.8rem;
             }
             .video-container {
                 flex-direction: column;
@@ -90,30 +90,30 @@
             const videos = document.querySelectorAll('video');
             let currentVideoIndex = 0;
 
-            // Function to switch videos with smooth transition
+            
             function switchVideos() {
                 const nextVideoIndex = (currentVideoIndex + 1) % videos.length;
-                videos[currentVideoIndex].style.opacity = 0; // Fade out the current video
+                videos[currentVideoIndex].style.opacity = 0; 
                 setTimeout(() => {
                     videos[currentVideoIndex].pause();
                     videos[currentVideoIndex].style.display = 'none';
                     videos[nextVideoIndex].style.display = 'block';
-                    videos[nextVideoIndex].style.opacity = 1; // Fade in the next video
+                    videos[nextVideoIndex].style.opacity = 1; 
                     videos[nextVideoIndex].play();
                     currentVideoIndex = nextVideoIndex;
-                }, 1000); // Wait for fade-out to complete before switching video
+                }, 1000); 
             }
 
-            // Show and play the first video initially
+           
             videos[0].style.display = 'block';
             videos[0].style.opacity = 1;
             videos[0].play();
 
-            // Switch videos every 7 seconds (3 seconds for nn, 4 seconds for nm)
+           
             setInterval(switchVideos, 8000);
         });
 
-        // Add event listener to play audio when user clicks/taps anywhere on the page
+        
         document.addEventListener('click', function playAudio() {
             const audio = document.querySelector('audio');
             if (audio) {
