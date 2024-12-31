@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Grid</title>
+    <title>NEW YEAR 2025</title>
     <style>
         body {
             display: flex;
@@ -19,7 +19,7 @@
         .video-container {
             display: flex;
             justify-content: center;
-            gap: 10px; 
+            gap: 0px; 
             position: relative;
             width: 100%; /* Ensure videos stretch across the width */
             height: 100%; /* Ensure videos fill the height */
@@ -36,8 +36,8 @@
         }
         .moving-text {
             position: absolute;
-            font-size: 3rem;
-            font-family: monospace;
+            font-size: 5rem;
+            font-family: 'Bold Fraktur Font';
             font-weight: bold;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -72,7 +72,7 @@
         /* Mobile-specific styling */
         @media (max-width: 1000px) {
             .moving-text {
-                font-size: 3rem;
+                font-size: 3.4rem;
             }
             .video-container {
                 flex-direction: column;
@@ -110,7 +110,7 @@
             videos[0].play();
 
             // Switch videos every 7 seconds (3 seconds for nn, 4 seconds for nm)
-            setInterval(switchVideos, 7000);
+            setInterval(switchVideos, 8000);
         });
 
         // Add event listener to play audio when user clicks/taps anywhere on the page
@@ -138,7 +138,7 @@
     </div>
     <div class="moving-text">
         <span class="line">Happy New Year</span>
-        <span class="line">2025</span>
+        <span class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2025&#128151</span>
     </div>
 
     <audio loop>
